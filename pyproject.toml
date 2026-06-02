@@ -1,0 +1,45 @@
+[project]
+name = "iu1-ml"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+  "albumentationsx[headless]>=2.3.0",
+  "ipykernel>=7.2.0",
+  "kaggle>=2.1.2",
+  "matplotlib>=3.10.9",
+  "nltk>=3.9.4",
+  "numpy>=2.4.6",
+  "pandas>=3.0.3",
+  "python-dotenv>=1.2.2",
+  "scikit-learn>=1.8.0",
+  "spacy>=3.8.14",
+  "torch>=2.12.0",
+  "torchvision>=0.27.0",
+  "tqdm>=4.67.3",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cuda"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cuda" }
+torchvision = { index = "pytorch-cuda" }
+
+[tool.basedpyright]
+venvPath = "."
+venv = ".venv"
+
+typeCheckingMode = "basic"
+reportAny = false
+
+analysis.diagnosticMode = "openFilesOnly"
+analysis.autoSearchPaths = true
+analysis.useLibraryCodeForTypes = true
+
+exclude = ["**/.venv", "**/__pycache__"]
+
+reportMissingTypeStubs = "none"
