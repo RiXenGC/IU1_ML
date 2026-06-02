@@ -1,9 +1,34 @@
-4 лабораторная
-Кластеризация
-Выбираем один любой из датасетов и решаем задачу кластеризации.
-Требуемая точность: 98.5
+# Лабораторная работа №4 
 
-Мне понравились такие датасеты (можно один любой взять):
-- https://www.kaggle.com/code/sagarvarandekar/spacex-falcon9-landing-prediction/input?select=SpaceX_Falcon9.csv
-- https://www.kaggle.com/datasets/erdemtaha/cancer-data
-- https://www.kaggle.com/code/jhoward/nb-svm-strong-linear-baseline/notebook
+## Задание
+
+Задача многоклассовой классификации
+
+## Решение
+
+Датасет: [Jigsaw Toxic Comment Classification Challenge](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge).
+
+
+## Структура
+ 
+```
+lab4/
+├── config.py                  
+├── src/
+│   ├── text_processor.py     
+│   └── utils/
+│       └── download_data.py   
+└── notebooks/
+    └── baseline.ipynb
+```
+
+
+## Загрузка датасета
+ 
+Датасет взят с соревнования Kaggle, поэтому необходимо авторизовации на [странице соревнования](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/rules).
+ 
+Запуск из корня проекта (нужен настроенный `.env`, см. корневой README):
+ 
+```bash
+uv run python -m lab4.src.utils.download_data
+```
