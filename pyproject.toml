@@ -1,25 +1,29 @@
 [project]
-name = "iu1-ml"
+name = "study-ml"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.13, <3.14"
 dependencies = [
   "albumentationsx[headless]>=2.3.0",
+  "imbalanced-learn>=0.14.1",
   "ipykernel>=7.2.0",
+  "joblib>=1.5.3",
   "kaggle>=2.1.2",
+  "lightgbm>=4.6.0",
   "matplotlib>=3.10.9",
   "nltk>=3.9.4",
   "numpy>=2.4.6",
   "pandas>=3.0.3",
+  "pyarrow>=24.0.0",
   "python-dotenv>=1.2.2",
   "scikit-learn>=1.8.0",
   "seaborn>=0.13.2",
+  "shap>=0.52.0",
   "spacy>=3.8.14",
   "torch>=2.12.0",
   "torchvision>=0.27.0",
-  "tqdm>=4.67.3",
-  "en_core_web_sm",
+  "xgboost>=3.2.0",
 ]
 
 [[tool.uv.index]]
@@ -30,7 +34,6 @@ explicit = true
 [tool.uv.sources]
 torch = { index = "pytorch-cuda" }
 torchvision = { index = "pytorch-cuda" }
-en_core_web_sm = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl" }
 
 [tool.basedpyright]
 venvPath = "."
