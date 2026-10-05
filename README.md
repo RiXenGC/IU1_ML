@@ -7,6 +7,7 @@
 - **lab3** — задача классификации изображений: определение COVID-19.
 - **lab4** — задача многоклассовой классификация токсичности комментариев
 - **lab5** – задача определения сепсиса по массиву признаков
+- **lab6** – задача определения сепсиса по массиву признаков
 
 ## Установка
 
@@ -26,11 +27,11 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 uv sync
 ```
 
-## Доступ к Kaggle (для lab3 и lab4)
+## Доступ к Kaggle
 
-Датасеты lab3 и lab4 скачиваются с Kaggle через API, для чего нужен токен.
+Некоторые датасеты скачиваются с Kaggle через API, для чего нужен токен.
 
-1. На [kaggle.com](https://www.kaggle.com) → Settings → API → **Create New Token**. Скачается `kaggle.json` с полями `username` и `key`.
+1. На [kaggle.com](https://www.kaggle.com) → Settings → API → **Generate New Token**. Скачается `kaggle.json` с полями `username` и `key`.
 2. В корне проекта создать файл `.env`:
 
 ```
@@ -39,6 +40,7 @@ KAGGLE_KEY=ваш_key
 ```
 
 `.env` читается автоматически (`python-dotenv`) при скачивании данных.
+Либо второй вариант: разместить ключ `kaggle.json` в системной директории
 
 ## Загрузка датасетов
 
@@ -50,4 +52,6 @@ uv run python -m lab3.src.utils.download_raw_data
 
 # lab4 — комментарии Jigsaw
 uv run python -m lab4.src.utils.download_data
+
+# lab6 — ...
 ```
