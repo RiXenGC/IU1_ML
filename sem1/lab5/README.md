@@ -3,7 +3,7 @@
 Запуск из корня проекта (нужен настроенный `.env`, см. корневой README):
  
 ```bash
-uv run python -m lab5.src.utils.download_data
+uv run python -m sem1.lab5.src.utils.download_data
 ```
 
 Проверьте файл .env

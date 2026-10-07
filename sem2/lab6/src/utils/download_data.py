@@ -1,13 +1,13 @@
 import os
-import subprocess
+import tarfile
 import zipfile
-import kagglehub
+
+from config import Config
+
 from kaggle.api.kaggle_api_extended import KaggleApi  # noqa: E402
 
-from sem2.lab6.config import Config
 
-
-def download_and_extract() -> None:
+def download_data() -> None:
 
     if os.path.exists(Config.target_dir) and len(os.listdir(Config.target_dir)) > 0:
         print(f" Набор данных уже скачан и находится в: {os.path.abspath(Config.target_dir)}")
@@ -15,7 +15,6 @@ def download_and_extract() -> None:
 
     os.makedirs(Config.target_dir, exist_ok=True)
     os.makedirs(Config.processed_dir, exist_ok=True)
-
 
     # Полный набор:
     # files_to_download = [
@@ -27,40 +26,37 @@ def download_and_extract() -> None:
     #     "single_mode_sample_submission.csv"
     # ]
     files_to_download = [
-        "sample.zarr",      
-        "aerial_map",      
-        "semantic_map",     
+        "sample.zarr.zip",      
+        # "aerial_map.tar.xz",      
+        # "semantic_map.tar.xz",     
     ]
     
-    path = kagglehub.competition_download('lyft-motion-prediction-autonomous-vehicles')
-            
-    # cmd = [
-    #     "kaggle", "competitions", "download",
-    #     Config.competition_name,
-    #     "-p", Config.target_dir,
-    #     "--force"   # Перезаписывает существующие файлы
-    # ]
-    
-    # # Добавляем флаг -f для установки только указанных в files_to_download файлов
-    # for file in files_to_download:
-    #     print(f"Скачиваем {file}...")
-        
-    #     cmd.extend(["-f", file])
-    
-    #     try:
-    #         subprocess.run(cmd, check=True)
-    #         print("Демо-данные успешно скачаны")
-    #         print(f"Файлы сохранены в: {Config.target_dir}")
-            
-    #     except subprocess.CalledProcessError as e:
-    #         print(f"Ошибка при скачивании: {e}")
-    #         # print("\nАльтернативный способ - скачать все файлы:")
-    #         #           path = kagglehub.competition_download(
-    #         #           Config.competition_name,
-    #         #           path=Config.target_dir,
-    #         #           force_download=True
-            #       )
+    # Почему-то не работает kagglehub ???
+    api = KaggleApi()
+    api.authenticate()
 
+    for file in files_to_download:
+        print(f"Скачиваем {file}...")
+        api.competition_download_file(Config.competition_name, file, Config.target_dir)
+
+    # Распаковка: zarr в data/raw/scenes/, карты в data/raw/
+    print("Распаковываем...")
+    scenes_dir = os.path.join(Config.target_dir, "scenes")
+    os.makedirs(scenes_dir, exist_ok=True)
+
+    with zipfile.ZipFile(os.path.join(Config.target_dir, "sample.zarr.zip")) as zf:
+        zf.extractall(scenes_dir)
+
+    for map_archive in ["aerial_map.tar.xz", "semantic_map.tar.xz"]:
+        with tarfile.open(os.path.join(Config.target_dir, map_archive), "r:xz") as tf:
+            tf.extractall(Config.target_dir)
+
+    # Архивы больше не нужны
+    for archive in files_to_download:
+        os.remove(os.path.join(Config.target_dir, archive))
+
+    print(f"Готово. Данные в: {os.path.abspath(Config.target_dir)}")
+    
 
 if __name__ == "__main__":
-    download_and_extract()
+    download_data()

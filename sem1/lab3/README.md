@@ -46,6 +46,6 @@ lab3/
 Запуск из корня проекта (нужен настроенный `.env`, см. корневой README):
  
 ```bash
-uv run python -m lab3.src.utils.download_raw_data
+uv run python -m sem1.lab3.src.utils.download_raw_data
 ```
 

@@ -8,6 +8,7 @@ dependencies = [
     "l5kit==1.5.0",
     "imageio>=2.9.0",
     "protobuf>=3.12.2,<4",
+    "kaggle>=1.7.4.5",
 ]
 
 [tool.uv]
