@@ -3,7 +3,7 @@ import zipfile
 
 from dotenv import load_dotenv
 
-from lab5.config import Config
+from sem1.lab3.config import Config
 
 _ = load_dotenv()
 
@@ -13,7 +13,6 @@ from kaggle.api.kaggle_api_extended import KaggleApi  # noqa: E402
 target_dir = Config().target_dir
 dataset_name = Config().dataset_name
 zip_path = Config().zip_path
-processed_dir = Config().processed_dir
 
 
 def download_and_extract() -> None:
@@ -27,7 +26,6 @@ def download_and_extract() -> None:
     api.authenticate()
 
     os.makedirs(target_dir, exist_ok=True)
-    os.makedirs(processed_dir, exist_ok=True)
 
     print("Скачивание датасета...")
     api.dataset_download_files(dataset_name, target_dir, quiet=False)  # pyright: ignore[reportUnknownMemberType]

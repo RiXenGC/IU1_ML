@@ -4,7 +4,7 @@ import zipfile
 import kagglehub
 from kaggle.api.kaggle_api_extended import KaggleApi  # noqa: E402
 
-from lab6.config import Config
+from sem2.lab6.config import Config
 
 
 def download_and_extract() -> None:
@@ -16,7 +16,8 @@ def download_and_extract() -> None:
     os.makedirs(Config.target_dir, exist_ok=True)
     os.makedirs(Config.processed_dir, exist_ok=True)
 
-    # Датасет
+
+    # Полный набор:
     # files_to_download = [
     #     "sample.zarr",      # Демо-набор для исследования
     #     "validate.zarr",    # Валидационный набор (большой, можно пропустить)
@@ -25,11 +26,14 @@ def download_and_extract() -> None:
     #     "multi_mode_sample_submission.csv",
     #     "single_mode_sample_submission.csv"
     # ]
+    files_to_download = [
+        "sample.zarr",      
+        "aerial_map",      
+        "semantic_map",     
+    ]
     
     path = kagglehub.competition_download('lyft-motion-prediction-autonomous-vehicles')
-    
-    # files_to_download = ["sample.zarr"]
-        
+            
     # cmd = [
     #     "kaggle", "competitions", "download",
     #     Config.competition_name,

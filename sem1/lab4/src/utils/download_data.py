@@ -4,7 +4,7 @@ import zipfile
 
 from dotenv import load_dotenv
 
-from lab4.config import Config
+from sem1.lab4.config import Config
 
 _ = load_dotenv()
 
