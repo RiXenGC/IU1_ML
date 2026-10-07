@@ -1,14 +1,14 @@
 [project]
 name = "lab6"
 version = "0.1.0"
-description = "Add your description here"
+description = "Lyft Motion Prediction (l5kit)"
 readme = "README.md"
-requires-python = ">=3.8"
-dependencies = []
+requires-python = ">=3.8,<3.9"
+dependencies = [
+    "l5kit==1.5.0",
+    "imageio>=2.9.0",
+    "protobuf>=3.12.2,<4",
+]
 
-[project.scripts]
-lab6 = "lab6:main"
-
-[build-system]
-requires = ["uv_build>=0.12.23,<0.13.0"]
-build-backend = "uv_build"
+[tool.uv]
+constraint-dependencies = ["pywinpty<2.0.14"]
