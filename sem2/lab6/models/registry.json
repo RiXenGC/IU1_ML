@@ -1,0 +1,14 @@
+{
+  "resnet": {
+    "generator": "generator_resnet.pth",
+    "discriminator": "discriminator_resnet.pth",
+    "losses": "losses_resnet.npz",
+    "curves": "curves_resnet.png"
+  },
+  "vae": {
+    "generator": "generator_vae.pth",
+    "discriminator": "discriminator_vae.pth",
+    "losses": "losses_vae.npz",
+    "curves": "curves_vae.png"
+  }
+}
