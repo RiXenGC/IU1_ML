@@ -1,10 +1,34 @@
-## Загрузка датасета
- 
-Запуск из корня проекта (нужен настроенный `.env` и параметры `KAGGLE_API_TOKEN`, `KAGGLE_USERNAME`, см. корневой README; либо должен быть настроен глобальный `kaggle.json` с вашим ключом)
+# Лабораторная работа №4 
 
-```bash
-uv run python -m lab7.src.utils.download_data
+## Задание
+
+Задача многоклассовой классификации
+
+## Решение
+
+Датасет: [Jigsaw Toxic Comment Classification Challenge](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge).
+
+
+## Структура
+ 
+```
+lab4/
+├── config.py                  
+├── src/
+│   ├── text_processor.py     
+│   └── utils/
+│       └── download_data.py   
+└── notebooks/
+    └── baseline.ipynb
 ```
 
-## Разделение датасета на train, val, test
 
+## Загрузка датасета
+ 
+Датасет взят с соревнования Kaggle, поэтому необходимо авторизовации на [странице соревнования](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/rules).
+ 
+Запуск из корня проекта (нужен настроенный `.env`, см. корневой README):
+ 
+```bash
+uv run python -m sem1.lab4.src.utils.download_data
+```
