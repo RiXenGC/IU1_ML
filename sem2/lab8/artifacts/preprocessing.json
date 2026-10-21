@@ -1,0 +1,35 @@
+{
+  "target": "temp_max",
+  "lookback": 30,
+  "horizon": 1,
+  "features": [
+    "precipitation",
+    "temp_max",
+    "temp_min",
+    "wind",
+    "year_sin",
+    "year_cos"
+  ],
+  "x_mean": {
+    "precipitation": 0.699394541219807,
+    "temp_max": 15.667305061559507,
+    "temp_min": 7.721203830369356,
+    "wind": 3.2086183310533514,
+    "year_sin": 0.0,
+    "year_cos": -5.832088118413955e-17
+  },
+  "x_std": {
+    "precipitation": 0.9813262675090416,
+    "temp_max": 7.324664458306147,
+    "temp_min": 5.095630130848334,
+    "wind": 1.48358814888273,
+    "year_sin": 0.7071067811865476,
+    "year_cos": 0.7071067811865476
+  },
+  "y_mean": 15.667305061559507,
+  "y_std": 7.324664458306147,
+  "train_end_exclusive": "2014-01-01",
+  "val_end_exclusive": "2015-01-01",
+  "source": "https://www.kaggle.com/datasets/ananthr1/weather-prediction",
+  "raw_sha256": "6fa53487858ab355a9ad5958236d47220faee53cf1e3bb92d1401b8a83234ce6"
+}
