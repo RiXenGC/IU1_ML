@@ -30,6 +30,11 @@ MANIFEST
 */data/
 */*/data/
 artifacts/
+*/artifacts/
+.uv-download-cache/
+.uv-nlp-cache/
+artifacts/
+data/prepared/
 
 .env
 .envrc

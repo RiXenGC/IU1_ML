@@ -1,3 +1,3 @@
 class Config:
-    dataset_name: str = "jigsaw-toxic-comment-classification-challenge"
-    target_dir: str = "lab4/data/raw"
+    dataset_name: str = "jigsaw-multilingual-toxic-comment-classification"
+    target_dir: str = "lab7/data/raw"
